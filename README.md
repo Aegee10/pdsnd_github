@@ -10,7 +10,14 @@ Bikeshare Project
 This program is designed to look at the Bikeshare usage information for Chicago, New York City, and Washington in order to better understand common trends in locations, length of use, and user demographics.
 
 ### Files used
-Include the files used
+bikeshare.py
+chicago.csv
+cities.csv
+data_selection.csv
+months.csv
+new_york_city.csv
+washington.csv
+weekdays.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
