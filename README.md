@@ -7,7 +7,7 @@
 Bikeshare Project
 
 ### Description
-Describe what your project is about and what it does
+This program is designed to look at the Bikeshare usage information for Chicago, New York City, and Washington in order to better understand common trends in locations, length of use, and user demographics.
 
 ### Files used
 Include the files used
