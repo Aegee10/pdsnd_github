@@ -13,7 +13,11 @@ months = pd.read_csv('months.csv', dtype = str).set_index('month').to_dict(orien
 weekdays = pd.read_csv('weekdays.csv', dtype = str).set_index('weekday').to_dict(orient='index')
 data_selection = pd.read_csv('data_selection.csv', dtype = str).set_index('selection').to_dict(orient='index')
 
-def get_valid_input(valid_options): # Prompts the user for filter inputs and validates them.
+def get_valid_input(valid_options):
+'''
+User is provided with a list of valid options pulled from the global dictionaries above. User input
+is requested and matched against the dictionary, returning the dictionary key to be used as a filter.
+'''
     input_str = 'Please choose from the available options: \n'
     for key, option in valid_options.items():
         input_str += f"{option['number']}. {key.title()}\n"
@@ -21,7 +25,7 @@ def get_valid_input(valid_options): # Prompts the user for filter inputs and val
     while True:
         try:
             user_input = input(input_str).lower()
-            for key, option in valid_options.items(): #Checks user input against options in designated CSV
+            for key, option in valid_options.items():
                 if user_input == key or user_input in option.values():
                     return key
                     x = 1
