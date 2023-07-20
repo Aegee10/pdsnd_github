@@ -1,3 +1,7 @@
+'''
+This program is designed to look at the Bikeshare usage information for Chicago, New York City, and Washington in order to better understand common trends in locations, length of use, and user demographics.
+'''
+
 import time
 import pandas as pd
 import numpy as np
@@ -9,7 +13,11 @@ months = pd.read_csv('months.csv', dtype = str).set_index('month').to_dict(orien
 weekdays = pd.read_csv('weekdays.csv', dtype = str).set_index('weekday').to_dict(orient='index')
 data_selection = pd.read_csv('data_selection.csv', dtype = str).set_index('selection').to_dict(orient='index')
 
-def get_valid_input(valid_options): # Prompts the user for filter inputs and validates them.
+def get_valid_input(valid_options):
+'''
+User is provided with a list of valid options pulled from the global dictionaries above. User input
+is requested and matched against the dictionary, returning the dictionary key to be used as a filter.
+'''
     input_str = 'Please choose from the available options: \n'
     for key, option in valid_options.items():
         input_str += f"{option['number']}. {key.title()}\n"
@@ -17,7 +25,7 @@ def get_valid_input(valid_options): # Prompts the user for filter inputs and val
     while True:
         try:
             user_input = input(input_str).lower()
-            for key, option in valid_options.items(): #Checks user input against options in designated CSV
+            for key, option in valid_options.items():
                 if user_input == key or user_input in option.values():
                     return key
                     x = 1
@@ -67,18 +75,11 @@ def load_data(city, month, day): # Pulls user inputs to filter data.
     # Ensure data frame is sorted by Start Time
     df = df.sort_values(by='Start Time')
 
-    # Converts the Start and End Time columns to datetime
-#    df['Start Time'] = pd.to_datetime(df['Start Time'])
-#    df['End Time'] = pd.to_datetime(df['End Time'])
-
     # Extracts month, day of week, and hour from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
 
-    # Converts Trip Duration into a numeric value
-#    df['Trip Duration'] = pd.to_numeric(df['Trip Duration'], errors = 'coerce')
-    
     # Converts Birth Year into a numeric value and fills in NaN values with None
     if 'Birth Year' in df.columns:
         df['Birth Year'] = pd.to_numeric(df['Birth Year']).replace('', None)
