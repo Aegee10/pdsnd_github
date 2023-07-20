@@ -1,3 +1,7 @@
+'''
+This program is designed to look at the Bikeshare usage information for Chicago, New York City, and Washington in order to better understand common trends in locations, length of use, and user demographics.
+'''
+
 import time
 import pandas as pd
 import numpy as np
