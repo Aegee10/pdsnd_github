@@ -75,18 +75,11 @@ def load_data(city, month, day): # Pulls user inputs to filter data.
     # Ensure data frame is sorted by Start Time
     df = df.sort_values(by='Start Time')
 
-    # Converts the Start and End Time columns to datetime
-#    df['Start Time'] = pd.to_datetime(df['Start Time'])
-#    df['End Time'] = pd.to_datetime(df['End Time'])
-
     # Extracts month, day of week, and hour from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
 
-    # Converts Trip Duration into a numeric value
-#    df['Trip Duration'] = pd.to_numeric(df['Trip Duration'], errors = 'coerce')
-    
     # Converts Birth Year into a numeric value and fills in NaN values with None
     if 'Birth Year' in df.columns:
         df['Birth Year'] = pd.to_numeric(df['Birth Year']).replace('', None)
